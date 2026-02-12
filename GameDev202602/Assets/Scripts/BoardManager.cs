@@ -28,6 +28,11 @@ public class BoardManager : MonoBehaviour
         SpawnAllPieces(); // ⭐追加
     }
 
+    void Update()
+    {
+        UpdateCoolTimes();
+    }
+
 
 
     void GenerateBoard()
@@ -109,12 +114,18 @@ public class BoardManager : MonoBehaviour
     {
         Piece piece = boardPieces[tile.x, tile.y];
 
-        if (piece != null)
+        if (piece == null) return;
+
+        if (!piece.CanMove())
         {
-            selectedPiece = piece;
-            Debug.Log("Selected " + piece.type);
+            Debug.Log("CT中");
+            return;
         }
+
+        selectedPiece = piece;
+        Debug.Log("Selected " + piece.type);
     }
+
     void TryMovePiece(Tile tile)
     {
         if (boardPieces[tile.x, tile.y] != null)
@@ -140,8 +151,12 @@ public class BoardManager : MonoBehaviour
         Vector3 newPos = new Vector3(newX * tileSize, 0.5f, newY * tileSize);
         piece.pieceObject.transform.position = newPos;
 
-        Debug.Log("Moved");
+        // ⭐ CT開始
+        piece.currentCoolTime = piece.coolTime;
+
+        Debug.Log("Moved / CT Start");
     }
+
 
 
     public void OnTileClicked(Tile tile)
@@ -156,6 +171,22 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    void UpdateCoolTimes()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Piece piece = boardPieces[x, y];
+                if (piece == null) continue;
+
+                if (piece.currentCoolTime > 0f)
+                {
+                    piece.currentCoolTime -= Time.deltaTime;
+                }
+            }
+        }
+    }
 
     GameObject GetPrefab(PieceType type)
     {

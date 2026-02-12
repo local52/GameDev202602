@@ -23,4 +23,9 @@ public class Piece
         this.coolTime = ct;
         this.currentCoolTime = 0;
     }
+    public bool CanMove()
+    {
+        return currentCoolTime <= 0f;
+    }
+
 }
