@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 2009597233}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 1.6, y: 4, z: 2.3}
+  m_LocalPosition: {x: 1.6, y: 6, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -412,6 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4133036d7e2884980e900331efcb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardManager
+  pawnPrefab: {fileID: 2078833684450378514, guid: 00ebd49521a809a4d8908f4941231786, type: 3}
+  rookPrefab: {fileID: 2303397312352231766, guid: aed576c8eab278140bab6c7da5336286, type: 3}
+  bishopPrefab: {fileID: 3186387545412853473, guid: 35af7482f200b6d49a52957b2c4115ff, type: 3}
+  kingPrefab: {fileID: 850041457184383680, guid: 2424bfd66285f624f8913adee758f104, type: 3}
   width: 3
   height: 5
   tileSize: 1.2
