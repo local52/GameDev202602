@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6764176781396982580}
   - component: {fileID: 3502602000582217239}
   - component: {fileID: 7370853311553424110}
+  - component: {fileID: 7443256103381700072}
   m_Layer: 0
   m_Name: BoardTile
   m_TagString: Untagged
@@ -111,3 +112,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7443256103381700072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291469313086215603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a668c7a8f40f8b24495ef7429acc05a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  x: 0
+  y: 0

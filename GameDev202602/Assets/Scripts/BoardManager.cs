@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
@@ -9,11 +9,15 @@ public class BoardManager : MonoBehaviour
     public GameObject tilePrefab;
 
     private GameObject[,] tiles;
+    private Piece[,] boardPieces;
+
 
     void Start()
     {
         GenerateBoard();
+        GeneratePieceData();
     }
+
 
     void GenerateBoard()
     {
@@ -25,12 +29,33 @@ public class BoardManager : MonoBehaviour
             {
                 Vector3 position = new Vector3(x * tileSize, 0, y * tileSize);
 
-                GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);//É|ÉWÉVÉáÉìÇ©ÇÁî’Çê∂ê¨
+                GameObject tile = Instantiate(tilePrefab, position, Quaternion.identity);
                 tile.name = $"Tile_{x}_{y}";
                 tile.transform.parent = transform;
+
+                // ‚≠ê „Åì„ÅìËøΩÂä†
+                Tile tileData = tile.GetComponent<Tile>();
+                if (tileData == null)
+                {
+                    tileData = tile.AddComponent<Tile>();
+                }
+
+                tileData.x = x;
+                tileData.y = y;
 
                 tiles[x, y] = tile;
             }
         }
     }
+    void GeneratePieceData()
+    {
+        boardPieces = new Piece[width, height];
+
+        // ‰ªÆÔºö„ÉÜ„Çπ„ÉàÈÖçÁΩÆ
+        boardPieces[1, 0] = new Piece(PieceType.King, Team.Bottom, 1, 0, 4f);
+        boardPieces[1, 4] = new Piece(PieceType.King, Team.Top, 1, 4, 4f);
+
+        Debug.Log("Piece Data Generated");
+    }
+
 }
