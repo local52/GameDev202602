@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Piece
 {
@@ -10,6 +10,8 @@ public class Piece
 
     public float coolTime;
     public float currentCoolTime;
+
+    public GameObject pieceObject; // ⭐追加
 
     public Piece(PieceType type, Team team, int x, int y, float ct)
     {
